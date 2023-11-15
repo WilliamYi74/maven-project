@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入数据库连接的配置文件-->
+    <properties resource="db.properties"/>
+    <!--配置LOG4J-->
+    <settings>
+        <setting name="logImpl" value="log4j"/>
+    </settings>
+    <!--起别名-->
+    <typeAliases>
+        <!--        <typeAlias type="com.itheima.bean.Student" alias="student"/>-->
+        <!--批量起别名 扫描整个包-->
+        <package name="com.itheima.bean"/>
+    </typeAliases>
+    <environments default="mysql">
+        <environment id="mysql">
+            <!-- transactionManager事务管理。  type属性，采用JDBC默认的事务-->
+            <transactionManager type="JDBC"/>
+            <!-- dataSource数据源信息   type属性 连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- mappers引入映射配置文件 -->
+    <mappers>
+        <!-- mapper 引入指定的映射配置文件   resource属性指定映射配置文件的名称 -->
+<!--        <mapper resource="StudentMapper.xml"/>-->
+        <package name="com.ywy.dao"/>
+    </mappers>
+</configuration>
