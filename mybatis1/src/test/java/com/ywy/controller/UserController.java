@@ -1,8 +1,8 @@
 package com.ywy.controller;
 
+import com.ywy.dao.UserDao;
 import com.ywy.entity.Orders;
 import com.ywy.entity.User;
-import com.ywy.dao.UserDao;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

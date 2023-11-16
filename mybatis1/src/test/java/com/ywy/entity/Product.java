@@ -1,7 +1,6 @@
 package com.ywy.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Product implements Serializable {
     private Integer id;
