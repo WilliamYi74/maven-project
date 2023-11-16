@@ -27,10 +27,11 @@
             </dataSource>
         </environment>
     </environments>
-    <!-- mappers引入映射配置文件 -->
+    <!-- mappers引入映射配置文件 注册mapper 注解开发则注册对应的dao接口 -->
     <mappers>
         <!-- mapper 引入指定的映射配置文件   resource属性指定映射配置文件的名称 -->
-<!--        <mapper resource="StudentMapper.xml"/>-->
+<!--        <mapper resource="StudentMapper.xml.xml"/>-->
+        <!--批量注册mapper 扫描整个包-->
         <package name="com.ywy.dao"/>
     </mappers>
 </configuration>

@@ -1,7 +1,6 @@
 package com.ywy.controller;
 
 import com.ywy.dao.ProductDao;
-import com.ywy.dao.UserDao;
 import com.ywy.entity.Product;
 import com.ywy.entity.User;
 import org.apache.ibatis.io.Resources;
@@ -12,18 +11,23 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
-public class UserController {
+public class ProductController {
     @Test
-    public void findProductByUserName() throws IOException {
+    public void findProduct() throws IOException {
         InputStream is = Resources.getResourceAsStream("SqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        UserDao mapper = sqlSession.getMapper(UserDao.class);
-        User user = mapper.findProductByUserName("三");
-        System.out.println(user.getName() + "有如下商品:");
-        for (Product product : user.getProductList()) {
-            System.out.print(product.getName() + ",");
+        ProductDao mapper = sqlSession.getMapper(ProductDao.class);
+        List<Product> productList = mapper.findAll();
+        for (Product product : productList) {
+            System.out.print("购买[" + product.getName() + "]的用户=>");
+            for (User user : product.getUserList()) {
+                System.out.print(user.getName() + " ");
+            }
+            System.out.println();
         }
+        System.out.println(productList);
     }
 }

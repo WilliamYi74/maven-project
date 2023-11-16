@@ -1,11 +1,14 @@
 package com.ywy.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
     private Integer id;
     private String name;
     private Integer age;
+
+    private List<Product> productList;
 
     @Override
     public String toString() {
@@ -13,6 +16,7 @@ public class User implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", productList=" + productList +
                 '}';
     }
 
@@ -40,12 +44,21 @@ public class User implements Serializable {
         this.age = age;
     }
 
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
     public User() {
     }
 
-    public User(Integer id, String name, Integer age) {
+    public User(Integer id, String name, Integer age, List<Product> productList) {
         this.id = id;
         this.name = name;
         this.age = age;
+        this.productList = productList;
     }
 }
