@@ -1,6 +1,7 @@
 package com.ywy.service;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ywy.config.SpringConfig;
 import com.ywy.dao.UserDao;
 import com.ywy.entity.User;
@@ -19,9 +20,10 @@ public class UserServiceTest {
     private UserDao userDao;
     @Test
     public void test(){
-        PageHelper.startPage(2,2);
+        PageHelper.startPage(1,10);
         List<User> userList = userDao.findAll(null);
-        userList.forEach(item->{
+        PageInfo<User> pageInfo = new PageInfo<>(userList);
+        pageInfo.getList().forEach(item->{
             System.out.println(item);
         });
     }
