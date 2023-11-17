@@ -1,6 +1,7 @@
 package com.ywy.controller;
 
 
+import com.github.pagehelper.PageHelper;
 import com.ywy.dao.ProductDao;
 import com.ywy.entity.Product;
 import org.apache.ibatis.io.Resources;
@@ -16,6 +17,19 @@ import java.util.List;
 public class ProductController {
     @Test
     public void testFindAll() throws IOException {
+        InputStream is = Resources.getResourceAsStream("SqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        ProductDao mapper = sqlSession.getMapper(ProductDao.class);
+        List<Product> productList = mapper.findAll();
+        productList.forEach(item -> {
+            System.out.println(item);
+        });
+    }
+
+    @Test
+    public void testFindAllByPage() throws IOException {
+        PageHelper.startPage(3,2);
         InputStream is = Resources.getResourceAsStream("SqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
