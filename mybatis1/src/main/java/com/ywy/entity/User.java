@@ -1,13 +1,15 @@
 package com.ywy.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class User implements Serializable {
     private Integer id;
     private String name;
     private Integer age;
-    
+
+    private BigDecimal money;
     private Orders orders;
     private List<Orders> ordersList;
 
@@ -17,6 +19,7 @@ public class User implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", money=" + money +
                 ", orders=" + orders +
                 ", ordersList=" + ordersList +
                 '}';
@@ -46,6 +49,14 @@ public class User implements Serializable {
         this.age = age;
     }
 
+    public BigDecimal getMoney() {
+        return money;
+    }
+
+    public void setMoney(BigDecimal money) {
+        this.money = money;
+    }
+
     public Orders getOrders() {
         return orders;
     }
@@ -65,10 +76,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id, String name, Integer age, Orders orders, List<Orders> ordersList) {
+    public User(Integer id, String name, Integer age, BigDecimal money, Orders orders, List<Orders> ordersList) {
         this.id = id;
         this.name = name;
         this.age = age;
+        this.money = money;
         this.orders = orders;
         this.ordersList = ordersList;
     }

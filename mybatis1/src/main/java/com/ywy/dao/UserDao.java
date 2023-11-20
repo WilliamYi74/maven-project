@@ -1,10 +1,10 @@
 package com.ywy.dao;
 
 import com.ywy.entity.User;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Component
+@Repository
 public interface UserDao {
     List<User> findAll(User user);
 }

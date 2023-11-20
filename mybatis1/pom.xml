@@ -10,12 +10,14 @@
     <build>
         <resources>
             <resource>
+                <!--配置java下的xml也打包输出到target 否则默认不会打包导致找不到xml-->
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.xml</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
+            <!--要打包的资源文件夹-->
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
@@ -45,11 +47,7 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>8.0.33</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.7</version>
-        </dependency>
+        <!--日志实现类log4j 给mybatis用-->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -66,6 +64,7 @@
             <artifactId>spring-test</artifactId>
             <version>5.3.29</version>
         </dependency>
+        <!--mybatis分页插件-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
@@ -92,6 +91,12 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>2.0.1</version>
+        </dependency>
+        <!--使用aop要导入这个坐标-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.6</version>
         </dependency>
     </dependencies>
 </project>
