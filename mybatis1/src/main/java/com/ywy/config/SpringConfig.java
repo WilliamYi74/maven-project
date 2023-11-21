@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configurable
 @ComponentScan({"com.ywy"}) // 配置包扫描路径
 @PropertySource(value = {"classpath:db.properties"}, ignoreResourceNotFound = true) // 读取db配置文件
-@Import({JDBCConfig.class, MybatisConfig.class}) // 导入配置bean
+@Import({JDBCConfig.class, MybatisConfig.class, JedisConfig.class}) // 导入配置bean
 @EnableAspectJAutoProxy // 开启注解式aop切面代理 不开启注解通知不会执行
 public class SpringConfig {
 
